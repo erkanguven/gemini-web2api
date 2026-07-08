@@ -9,7 +9,7 @@ services:
     
     # KRİTİK ÇÖZÜM: Render'ın gizli klasöründeki ayar dosyasını, 
     # uygulamanın görebileceği ana dizine kopyalayıp uygulamayı öyle başlatıyoruz.
-    dockerCommand: 'sh -c "cp /etc/secrets/config.json ./config.json && python gemini_web2api.py"'
+    dockerCommand: cp /etc/secrets/config.json ./config.json && python gemini_web2api.py
     
     envVars:
       - key: PORT
