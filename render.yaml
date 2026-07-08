@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: gemini-web2api-server
+    env: docker
+    plan: free
+    region: frankfurt
+    branch: main
+    autoDeploy: true
+    
+    # KRİTİK ÇÖZÜM: Render'ın gizli klasöründeki ayar dosyasını, 
+    # uygulamanın görebileceği ana dizine kopyalayıp uygulamayı öyle başlatıyoruz.
+    dockerCommand: 'sh -c "cp /etc/secrets/config.json ./config.json && python gemini_web2api.py"'
+    
+    envVars:
+      - key: PORT
+        value: "8081"
